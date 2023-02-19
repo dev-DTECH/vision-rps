@@ -1,5 +1,5 @@
 # Vision RPS
-> [Live Preview!]()
+> [Live Preview!](https://dev-dtech.github.io/vision-rps/)
 
 - Designed and implemented a Rock-Paper-Scissors game using Machine Learning using Mediapipe’s hand tracking.
 - Collected a dataset of size 1329 using OpenCV and preprocessed it to our requirements. 
