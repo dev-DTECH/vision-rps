@@ -1,9 +1,14 @@
 const videoElement = document.getElementsByClassName('input_video')[0];
 const canvasElement = document.getElementsByClassName('output_canvas')[0];
 const canvasCtx = canvasElement.getContext('2d');
-const model = await await tf.loadLayersModel('models/v1_tfjs_model/model.json');
+
+var model
+async function loadModel(){
+    model = await tf.loadLayersModel('models/v1_tfjs_model/model.json');
+}
+loadModel()
 const classes=['rock','paper','scissors']
-let out=-1
+var out=-1
 function preprocess(shape,landmarks){
   let image_width=shape[1], image_height =shape[0]
   let processed=[]
@@ -32,10 +37,12 @@ function preprocess(shape,landmarks){
 function onResults(results) {
   canvasCtx.save();
   canvasCtx.clearRect(0, 0, canvasElement.width, canvasElement.height);
+  // canvasCtx.scale(-1, 1);
   canvasCtx.drawImage(
       results.image, 0, 0, canvasElement.width, canvasElement.height);
+  // canvasCtx.restore()
   let outele = document.querySelector("#output")
-    outele.innerHTML=''
+    outele.innerHTML='✊'
     out=-1
 
 
@@ -84,9 +91,9 @@ const hands = new Hands({locateFile: (file) => {
 }});
 hands.setOptions({
   maxNumHands: 1,
-  modelComplexity: 0,
-  minDetectionConfidence: 0.5,
-  minTrackingConfidence: 0.5
+  modelComplexity: 1,
+  minDetectionConfidence: 0.1,
+  minTrackingConfidence: 0.1
 });
 hands.onResults(onResults);
 
@@ -98,24 +105,4 @@ const camera = new Camera(videoElement, {
   height: 720
 });
 camera.start();
-setInterval(()=>{
-  let ai=Math.round(Math.random()*2)
-  if(out==ai)
-    alert("Draw")
-  if(out==0 && ai==1)
-    alert("Computer wins")
-  if(out==0 && ai==2)
-    alert("Player wins")
 
-  if(out==1 && ai==0)
-    alert("Player wins")
-  if(out==1 && ai==2)
-    alert("Computer wins")
-
-  if(out==2 && ai==0)
-    alert("Computer wins")
-  if(out==2 && ai==1)
-    alert("Player wins")
-
-
-},5000)

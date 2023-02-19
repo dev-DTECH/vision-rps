@@ -176,6 +176,7 @@ input:checked ~ #message {
   display: flex;
   align-items: center;
   justify-content: center;
+  f
 }
 
 #icons {

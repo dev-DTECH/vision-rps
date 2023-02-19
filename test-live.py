@@ -134,7 +134,7 @@ with mp_hands.Hands(
             for hand_landmarks in results.multi_hand_landmarks:
                 landmark = preprocess_landmark(calc_landmark_list(debug_image,hand_landmarks))
                 landmark = np.array(landmark)
-                print(landmark)
+                # print(landmark)
                 if(len(landmark)):
                     prediction= model.predict(np.array([landmark], dtype=np.float32))
                     # print(np.argmax(prediction))
