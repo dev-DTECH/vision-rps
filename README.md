@@ -1,5 +1,5 @@
 # Vision RPS
-> [Live Preview!](https://dev-dtech.github.io/vision-rps/)
+> [Live Preview!](https://vision-rps.devdt.xyz/)
 
 A Rock-Paper-Scissors game using Machine Learning and Mediapipe’s hand tracking.
 - Designed and implemented a Rock-Paper-Scissors game using Machine Learning using Mediapipe’s hand tracking.
